@@ -13,7 +13,7 @@
   position: fixed;
   right: 20px;
   top: 18px;
-  z-index: 110;
+  z-index: 171;
   padding: 10px 15px;
   border: 1px solid var(--gc-teal);
   border-radius: 5px;
@@ -28,7 +28,7 @@
   top: 70px;
   width: 355px;
   max-height: calc(100dvh - 170px);
-  z-index: 105;
+  z-index: 170;
   background: linear-gradient(155deg, #10272bf5, #091419f5);
   border: 1px solid var(--gc-line);
   border-radius: 10px;
@@ -362,4 +362,11 @@ body:has(#gc-dashboard:not([hidden]))
   :is(#pp-toggles, #cctv-panel, #street-level-panel, #global-context-panel) {
   visibility: hidden;
   pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  body:has(#gc-dashboard:not([hidden])) #command-dock {
+    visibility: hidden;
+    pointer-events: none;
+  }
 }

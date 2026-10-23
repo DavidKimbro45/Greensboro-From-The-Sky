@@ -2,6 +2,8 @@
 
 A localized globe-to-county edition of the original God’s Eye View. Includes a Guilford situation dashboard, NWS weather/alerts, NCDOT road incidents and county GIS overlays, with the original global application retained.
 
+**[GitHub upload status →](GITHUB_UPLOAD.md)**
+
 **[Local setup, sources, coverage and feature guide →](docs/guilford/README.md)** · **[Upstream provenance →](UPSTREAM.md)**
 
 Quick start: install Node 24.14+ (24.x) or 26.x, then `npm ci` and `npm run dev`. Open the printed localhost URL. No API keys are needed for the basic globe and local public feeds. Optional original features require provider configuration. This build creates a repository; no public hosting or paid providers are enabled.
