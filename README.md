@@ -1,4 +1,4 @@
-# God’s Eye · Guilford County, North Carolina
+# Greensboro from the Sky
 
 A localized globe-to-county edition of the original God’s Eye View. Includes a Guilford situation dashboard, NWS weather/alerts, NCDOT road incidents and county GIS overlays, with the original global application retained.
 

@@ -370,3 +370,11 @@ body:has(#gc-dashboard:not([hidden]))
     pointer-events: none;
   }
 }
+
+#title-bar h1 {
+  font-size: 22px;
+  letter-spacing: 3px;
+}
+.gc-heading h2 {
+  line-height: 1.25;
+}

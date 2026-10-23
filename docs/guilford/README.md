@@ -1,4 +1,4 @@
-# Guilford County God’s Eye
+# Greensboro from the Sky
 
 A localized edition of [Bilawal Sidhu’s God’s Eye View](https://github.com/bilawalsidhu/gods-eye-view). It opens on Earth and flies into Guilford County, North Carolina. The county extension currently uses English. The original application and its global features remain in the repository; the additions provide a local situation panel and county GIS overlays.
 
@@ -7,8 +7,8 @@ A localized edition of [Bilawal Sidhu’s God’s Eye View](https://github.com/b
 Use Node **24.14 or later in the 24.x line**, or Node 26.x, with npm.
 
 ```sh
-git clone https://github.com/DavidKimbro45/guilford-gods-eye.git
-cd guilford-gods-eye
+git clone https://github.com/DavidKimbro45/greensboro-from-the-sky.git
+cd greensboro-from-the-sky
 npm ci
 npm run dev
 ```

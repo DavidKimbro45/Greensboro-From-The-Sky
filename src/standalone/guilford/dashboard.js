@@ -61,17 +61,20 @@ export function mountGuilfordDashboard({
     target.addEventListener(event, handler);
     listeners.push(() => target.removeEventListener(event, handler));
   };
-  const button = el('button', '◉ GUILFORD', 'gc-launch');
+  const button = el('button', '◉ GREENSBORO SKY', 'gc-launch');
   button.type = 'button';
   button.setAttribute('aria-controls', 'gc-dashboard');
   button.setAttribute('aria-expanded', 'true');
   const panel = el('aside', null, 'gc-dashboard');
   panel.id = 'gc-dashboard';
   // i18n-ignore: This county extension is English-only; upstream locale support is retained.
-  panel.setAttribute('aria-label', 'Guilford County situational dashboard');
+  panel.setAttribute(
+    'aria-label',
+    'Greensboro from the Sky situational dashboard',
+  );
   // i18n-ignore: This county extension is English-only; upstream locale support is retained.
   panel.innerHTML = `
-    <header class="gc-heading"><div><span class="gc-eyebrow">NORTH CAROLINA · 36.08° N / 79.79° W</span><h2>GUILFORD <span>COUNTY</span></h2><p>Public signals. Local perspective.</p></div><button type="button" class="gc-close" aria-label="Close county dashboard">×</button></header>
+    <header class="gc-heading"><div><span class="gc-eyebrow">NORTH CAROLINA · 36.08° N / 79.79° W</span><h2>GREENSBORO<br><span>FROM THE SKY</span></h2><p>Guilford County · Public signals. Local perspective.</p></div><button type="button" class="gc-close" aria-label="Close county dashboard">×</button></header>
     <div class="gc-nav"><button type="button" data-gc-nav="earth">Earth</button><button type="button" data-gc-nav="county">Zoom to county</button><button type="button" data-gc-nav="refresh">Refresh feeds</button></div>
     <label class="gc-destination">FLY TO<select aria-label="Local destination"></select></label>
     <div class="gc-tabs" role="tablist" aria-label="County information"><button type="button" role="tab" id="gc-tab-situation" aria-controls="gc-situation" aria-selected="true" data-tab="situation">Situation</button><button type="button" role="tab" id="gc-tab-layers" aria-controls="gc-layers" aria-selected="false" tabindex="-1" data-tab="layers">Map layers</button><button type="button" role="tab" id="gc-tab-sources" aria-controls="gc-sources" aria-selected="false" tabindex="-1" data-tab="sources">Coverage</button></div>
