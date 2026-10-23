@@ -1,9 +1,11 @@
-# GitHub upload pending
+# GitHub repository
 
-Target: https://github.com/DavidKimbro45/Greensboro-From-The-Sky
+The complete project is published at:
 
-The repository exists and is public. Its initial README commit and tagline have been integrated into the local project history. Upload remains blocked: both Git push and the GitHub connector returned HTTP 403 (Resource not accessible by integration).
+https://github.com/DavidKimbro45/Greensboro-From-The-Sky
 
-Grant the connected GitHub integration Contents: Read and write access to this repository, then retry the push. No remote files or repository visibility were changed.
+The code is on `main`. The original README commit and project tagline are preserved in the history and README. The user configured repository write access, and the cloud workspace successfully uploaded the application. Repository visibility remains public, as configured by the user.
 
-Run instructions are in docs/guilford/README.md. Publishing source does not deploy a live website or provision provider keys.
+See [the setup and source guide](docs/guilford/README.md) for running the application and configuring optional providers. Publishing this source repository does not deploy a running dashboard or provision paid provider keys.
+
+Development and upload were performed in a managed cloud workspace; no installation on the user's shared device was required.
