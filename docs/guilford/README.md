@@ -7,7 +7,7 @@ A localized edition of [Bilawal Sidhu’s God’s Eye View](https://github.com/b
 Use Node **24.14 or later in the 24.x line**, or Node 26.x, with npm.
 
 ```sh
-git clone https://github.com/DavidKimbro45/greensboro-from-the-sky.git
+git clone https://github.com/DavidKimbro45/Greensboro-From-The-Sky.git
 cd greensboro-from-the-sky
 npm ci
 npm run dev

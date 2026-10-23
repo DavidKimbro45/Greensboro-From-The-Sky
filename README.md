@@ -1,8 +1,10 @@
 # Greensboro from the Sky
 
+Many ways to see your city and its current status.
+
 A localized globe-to-county edition of the original God’s Eye View. Includes a Guilford situation dashboard, NWS weather/alerts, NCDOT road incidents and county GIS overlays, with the original global application retained.
 
-**[GitHub upload status →](GITHUB_UPLOAD.md)**
+**[GitHub repository →](https://github.com/DavidKimbro45/Greensboro-From-The-Sky)**
 
 **[Local setup, sources, coverage and feature guide →](docs/guilford/README.md)** · **[Upstream provenance →](UPSTREAM.md)**
 

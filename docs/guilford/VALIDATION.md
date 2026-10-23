@@ -12,4 +12,4 @@ Validated on October 23, 2026 using Node 24.19.0.
 
 The managed browser does not trust this environment's HTTPS proxy certificate directly. Browser map checks therefore used live responses fetched through Node's configured CA trust and supplied to Chromium; TLS verification remained enabled. Optional paid/keyed providers were not provisioned or tested. This is not a claim that every original layer has coverage in Guilford County.
 
-GitHub publication is blocked by the connected account's repository-creation permission. See GITHUB_UPLOAD.md.
+GitHub source repository: https://github.com/DavidKimbro45/Greensboro-From-The-Sky. The user supplied the repository after the initial repository-creation permission failure. See GITHUB_UPLOAD.md.
