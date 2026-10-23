@@ -96,6 +96,37 @@ export function mountGuilfordDashboard({
       setOpen(false);
     }
   });
+  // Original tools can open their rail through map selection, voice or restore.
+  // Yield the county panel so its CSS cannot hide or intercept those controls.
+  const rightPanels = [
+    'pp-toggles',
+    'cctv-panel',
+    'street-level-panel',
+    'global-context-panel',
+  ]
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+  const streetPhoto = document.getElementById('sl-viewer-wrap');
+  const yieldToOriginalTools = () => {
+    if (
+      rightPanels.some((node) => !node.classList.contains('collapsed')) ||
+      (streetPhoto && !streetPhoto.hidden)
+    )
+      setOpen(false);
+  };
+  const railObserver = new MutationObserver(yieldToOriginalTools);
+  for (const node of rightPanels)
+    railObserver.observe(node, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  if (streetPhoto)
+    railObserver.observe(streetPhoto, {
+      attributes: true,
+      attributeFilter: ['hidden'],
+    });
+  listeners.push(() => railObserver.disconnect());
+  yieldToOriginalTools();
   function navigate(lat, lon, height, duration = 2.5) {
     styleManager.orbitController?.stop();
     viewer.trackedEntity = undefined;

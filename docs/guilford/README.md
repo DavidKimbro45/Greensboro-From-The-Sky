@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Open the localhost URL printed by Vite. No API keys are required for the basic globe or the new county feeds. The first visit can also show the original mission chooser; choose Explore Manually or press Escape to keep the county view. Use `/?welcome=0` to skip that chooser. Dragging or scrolling on the globe cancels the introductory flight. Shared camera links keep their original view.
+Open the localhost URL printed by Vite. No API keys are required for the basic globe or the new county feeds. The first visit can also show the original mission chooser; choose Explore Manually or press Escape to keep the county view. Use `/?welcome=0` to skip that chooser. Dragging or scrolling on the globe cancels the introductory flight. Shared camera links keep their original view. Programmatic camera navigation also takes precedence over the delayed county fly-in. Opening an original right-side tool or a street photo closes the county panel so its controls remain accessible.
 
 For the production bundle with the Node provider server:
 

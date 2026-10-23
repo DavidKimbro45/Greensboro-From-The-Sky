@@ -11,6 +11,9 @@ export function flyToGuilford(viewer) {
     ),
     orientation: { heading: 0, pitch: -Math.PI / 2, roll: 0 },
   });
+  // Programmatic navigation can happen before the delayed fly-in (search,
+  // shared tools or browser QA). It must take precedence just like a gesture.
+  const initialPosition = Cesium.Cartesian3.clone(viewer.camera.positionWC);
   let active = false;
   let cancelled = false;
   const container = viewer.container.ownerDocument || viewer.container;
@@ -22,6 +25,18 @@ export function flyToGuilford(viewer) {
   };
   const timer = setTimeout(() => {
     if (cancelled || viewer.isDestroyed()) return;
+    if (
+      initialPosition &&
+      !Cesium.Cartesian3.equalsEpsilon(
+        initialPosition,
+        viewer.camera.positionWC,
+        1e-9,
+        1,
+      )
+    ) {
+      cancelled = true;
+      return;
+    }
     active = true;
     viewer.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(COUNTY.lon, COUNTY.lat, 85000),
