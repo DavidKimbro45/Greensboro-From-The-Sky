@@ -70,7 +70,7 @@ export function mountGuilfordDashboard({
   // i18n-ignore: This county extension is English-only; upstream locale support is retained.
   panel.setAttribute(
     'aria-label',
-    'Greensboro from the Sky situational dashboard',
+    'Greensboro from the Sky situational dashboard', // i18n-ignore: English-only county extension.
   );
   // i18n-ignore: This county extension is English-only; upstream locale support is retained.
   panel.innerHTML = `
