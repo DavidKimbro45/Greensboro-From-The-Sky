@@ -1,0 +1,25 @@
+# syntax=docker/dockerfile:1
+# Run the built globe and its Node API providers together, rather than serving
+# dist as a static-only site. The base matches the upstream tested Node runtime.
+FROM node:24.14.0-slim@sha256:d8e448a56fc63242f70026718378bd4b00f8c82e78d20eefb199224a4d8e33d8 AS build
+WORKDIR /app
+ENV PUPPETEER_SKIP_DOWNLOAD=1
+COPY package.json package-lock.json ./
+# proxy_ca is optional for normal cloud builds. The managed development
+# environment supplies it for TLS verification through its session proxy.
+RUN --mount=type=secret,id=proxy_ca \
+    if [ -f /run/secrets/proxy_ca ]; then export NODE_EXTRA_CA_CERTS=/run/secrets/proxy_ca; fi; \
+    npm ci --include=dev --no-audit --no-fund
+COPY . .
+RUN npm run build
+RUN npm prune --omit=dev --ignore-scripts --no-audit --no-fund
+
+FROM node:24.14.0-slim@sha256:d8e448a56fc63242f70026718378bd4b00f8c82e78d20eefb199224a4d8e33d8
+WORKDIR /app
+ENV NODE_ENV=production HOST=0.0.0.0 PORT=8080
+COPY --from=build --chown=node:node /app /app
+USER node
+EXPOSE 8080
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s \
+  CMD node -e "fetch('http://127.0.0.1:'+process.env.PORT+'/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+CMD ["npm", "start"]

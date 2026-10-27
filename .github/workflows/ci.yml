@@ -148,3 +148,33 @@ jobs:
 
       - name: Build production bundle
         run: npm run build
+
+  production-runtime:
+    name: Production runtime
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: '1'
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Use Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.14.0
+          cache: npm
+      - name: Install production dependencies only
+        run: npm ci --omit=dev
+      - name: Build the complete application
+        run: npm run build
+      - name: Verify production start and API serving
+        run: |
+          PORT=4317 HOST=127.0.0.1 npm start > production-start.log 2>&1 &
+          runtime_pid=$!
+          trap 'kill "$runtime_pid" 2>/dev/null || true' EXIT
+          node scripts/smoke-production.mjs http://127.0.0.1:4317
+      - name: Production log on failure
+        if: failure()
+        run: cat production-start.log

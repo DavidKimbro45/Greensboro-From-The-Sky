@@ -8,7 +8,11 @@ A localized globe-to-county edition of the original God’s Eye View. Includes a
 
 **[Local setup, sources, coverage and feature guide →](docs/guilford/README.md)** · **[Upstream provenance →](UPSTREAM.md)**
 
-Quick start: install Node 24.14+ (24.x) or 26.x, then `npm ci` and `npm run dev`. Open the printed localhost URL. No API keys are needed for the basic globe and local public feeds. Optional original features require provider configuration. This build creates a repository; no public hosting or paid providers are enabled.
+The production application includes both the 3D globe and a Node API server. It cannot run as a static-only GitHub Pages site.
+
+Cloud hosting uses `Dockerfile.vercel` and the Container preset. The image installs dependencies, builds the globe, and starts the API server with `npm start`. `/healthz` reports server readiness. No files need to be installed on the shared device.
+
+For development in a cloud terminal: `npm ci`, `npm run build`, then `npm start`. The host supplies `PORT` and exact `GEV_ALLOWED_HOSTS`; the default port is 8080. Basic maps and the local public feeds require no API keys. Original features that require external credentials remain optional.
 
 ---
 

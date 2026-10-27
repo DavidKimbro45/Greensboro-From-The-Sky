@@ -7,7 +7,7 @@ A localized edition of [Bilawal Sidhu’s God’s Eye View](https://github.com/b
 Use Node **24.14 or later in the 24.x line**, or Node 26.x, with npm.
 
 ```sh
-git clone https://github.com/DavidKimbro45/Greensboro-From-The-Sky.git
+git clone https://github.com/DavidKimbro45/Greensboro-From-The-Sky.git greensboro-from-the-sky
 cd greensboro-from-the-sky
 npm ci
 npm run dev
@@ -19,10 +19,10 @@ For the production bundle with the Node provider server:
 
 ```sh
 npm run build
-npm run preview -- --host 127.0.0.1
+npm start
 ```
 
-Do not deploy only `dist/` to a static host: `/api` routes, original provider proxies and optional voice need the Node server. See the retained upstream Dockerfile, compose file and SECURITY.md for self-hosting. Public hosting needs a hostname allowlist, HTTPS and access controls; keep Provider Settings local. This repository does not deploy a public service automatically.
+Do not deploy only `dist/` to a static host: `/api` routes, original provider proxies and optional voice need the Node server. See the retained upstream Dockerfile, compose file and SECURITY.md for self-hosting. Public hosting needs a hostname allowlist, HTTPS and access controls; keep Provider Settings local. The production server serves the built globe and all provider middleware together. It requires `dist/index.html`, binds to `HOST` (default `0.0.0.0`) and `PORT` (default `8080`), and exposes `/healthz`. Exact hostnames in `GEV_ALLOWED_HOSTS` and the platform-provided Vercel deployment hostnames are allowed. Unknown hosts remain blocked. `Dockerfile.vercel` and `vercel.json` configure the complete Node application for Vercel Container Runtime (currently beta), rather than a static-only Vite deployment. Runtime caches and logs in a container are disposable. Provider keys must be configured through the cloud host; the local key editor is unavailable in this production server. Optional paid provider endpoints retain their upstream same-site checks; configuring a key alone does not make those endpoints available through every reverse proxy.
 
 ## Using the local dashboard
 
@@ -75,4 +75,4 @@ npm run build
 
 Tests cover fixed routes, cache/coalescing, expiry, partial responses, stale fallback, invalid providers, methods and link handling. The original suite is retained. Public feed checks depend on external availability.
 
-For upstream updates, use the recorded base commit in UPSTREAM.md, review changes in an integration branch, then run the checks above. A clone created for this project is an independent private repository, not a GitHub fork; it can retain an `upstream` Git remote without publishing your changes.
+For upstream updates, use the recorded base commit in UPSTREAM.md, review changes in an integration branch, then run the checks above. A clone created for this project is an independent repository, not a GitHub fork; it can retain an `upstream` Git remote without publishing your changes.
