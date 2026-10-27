@@ -2,7 +2,11 @@
 
 A localized edition of [Bilawal Sidhu’s God’s Eye View](https://github.com/bilawalsidhu/gods-eye-view). It opens on Earth and flies into Guilford County, North Carolina. The county extension currently uses English. The original application and its global features remain in the repository; the additions provide a local situation panel and county GIS overlays.
 
-## Run it
+## Open the cloud application
+
+Use https://greensboro-from-the-sky.vercel.app. Sign in to the owning Vercel account if prompted. No download or installation on the shared device is needed. See [cloud runtime and release details](CLOUD_DEPLOYMENT.md).
+
+## Run it in a development or hosting environment
 
 Use Node **24.14 or later in the 24.x line**, or Node 26.x, with npm.
 

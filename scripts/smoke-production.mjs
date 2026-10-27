@@ -47,6 +47,16 @@ assert.equal(
   404,
   'local credential editor is unavailable in production',
 );
+const debugLog = await fetch(new URL('/api/realtime/debug-log', base), {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ event: 'production-smoke' }),
+});
+assert.equal(
+  debugLog.status,
+  204,
+  'the runtime can write its disposable diagnostic log',
+);
 // Undici fetch owns Host, so use the HTTP client to exercise the actual wire header.
 const untrusted = await new Promise((resolve, reject) => {
   const url = new URL('/healthz', base);
@@ -64,5 +74,5 @@ const untrusted = await new Promise((resolve, reject) => {
 });
 assert.equal(untrusted, 403, 'untrusted Host is rejected');
 console.log(
-  'Production smoke passed: configured port, health, compiled UI, provider JSON, API 404, disabled key editor, Host policy.',
+  'Production smoke passed: configured port, health, compiled UI, provider JSON, API 404, disabled key editor, writable diagnostic directory, Host policy.',
 );
